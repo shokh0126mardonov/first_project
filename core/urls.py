@@ -28,9 +28,10 @@ urlpatterns = [
     path("", include("apps.accounts.urls")),
     path("", include("apps.products.urls")),
     path("", include("apps.inquiries.urls")),
-
-    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api/url/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path(
+        "api/url/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"
+    ),
 ]
 
 if settings.DEBUG:

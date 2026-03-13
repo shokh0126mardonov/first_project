@@ -15,7 +15,7 @@ from datetime import timedelta
 
 from pathlib import Path
 
-from decouple import config,Csv
+from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,12 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv()) # Example with Csv helper
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())  # Example with Csv helper
 
 
 # Application definition
@@ -48,8 +48,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "rest_framework",
     "rest_framework_simplejwt",
-
-    'drf_spectacular'
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -145,34 +144,27 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 REST_FRAMEWORK = {
-
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
     ],
-
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-
     "DEFAULT_PAGINATION_CLASS": "apps.products.pagination.CustomPagination",
     "PAGE_SIZE": 100,
-
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
         "rest_framework.filters.OrderingFilter",
         "rest_framework.filters.SearchFilter",
     ],
-
     "DEFAULT_THROTTLE_CLASSES": [
         "core.throttles.GlobalThrottle",
     ],
-
     "DEFAULT_THROTTLE_RATES": {
         "global": "60/min",
         "inquiry": "3/5min",
         "auth": "10/10min",
     },
-
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
@@ -182,13 +174,9 @@ SIMPLE_JWT = {
 }
 
 SPECTACULAR_SETTINGS = {
-
     "TITLE": "FastEdu API",
     "DESCRIPTION": "API documentation for FastEdu project",
     "VERSION": "1.0.0",
-
     "SERVE_INCLUDE_SCHEMA": False,
-
     "COMPONENT_SPLIT_REQUEST": True,
-
 }

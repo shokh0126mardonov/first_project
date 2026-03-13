@@ -6,10 +6,7 @@ class InquiryThrottle(SimpleRateThrottle):
 
     def get_cache_key(self, request, view):
         ident = self.get_ident(request)
-        return self.cache_format % {
-            "scope": self.scope,
-            "ident": ident
-        }
+        return self.cache_format % {"scope": self.scope, "ident": ident}
 
 
 class AuthThrottle(SimpleRateThrottle):
@@ -17,10 +14,7 @@ class AuthThrottle(SimpleRateThrottle):
 
     def get_cache_key(self, request, view):
         ident = self.get_ident(request)
-        return self.cache_format % {
-            "scope": self.scope,
-            "ident": ident
-        }
+        return self.cache_format % {"scope": self.scope, "ident": ident}
 
 
 class GlobalThrottle(SimpleRateThrottle):
@@ -28,7 +22,4 @@ class GlobalThrottle(SimpleRateThrottle):
 
     def get_cache_key(self, request, view):
         ident = self.get_ident(request)
-        return self.cache_format % {
-            "scope": self.scope,
-            "ident": ident
-        }
+        return self.cache_format % {"scope": self.scope, "ident": ident}

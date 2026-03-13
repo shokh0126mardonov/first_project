@@ -10,12 +10,12 @@ from .serializers import ProductSerializers
 from .pagination import CustomPagination
 from .filters import ProductFilter
 
-class ProductViewSets(ModelViewSet):
 
+class ProductViewSets(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializers
     pagination_class = CustomPagination
-    
+
     filter_backends = [
         DjangoFilterBackend,
         OrderingFilter,
@@ -51,10 +51,11 @@ class ProductViewSets(ModelViewSet):
     def perform_update(self, serializer):
         serializer.save()
 
+
 from drf_spectacular.utils import extend_schema
+
 
 @extend_schema(tags=["Products"])
 class ProductViewSets(ModelViewSet):
-
     queryset = Product.objects.all()
     serializer_class = ProductSerializers

@@ -11,9 +11,9 @@ from .permissions import IsSuperAdmin
 from .serializers import RegisterSerializers, UserSerializers
 
 
-
 class CustomTokenObtainPairView(TokenObtainPairView):
     throttle_classes = [AuthThrottle]
+
 
 class AdminCreate(APIView):
     permission_classes = [IsAuthenticated, IsSuperAdmin]

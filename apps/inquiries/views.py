@@ -48,7 +48,6 @@ class InquiriesViewSets(ModelViewSet):
 
 @extend_schema(tags=["Inquiries"])
 class InquiriesViewSets(ModelViewSet):
-
     queryset = Inquiry.objects.all()
     serializer_class = InquirySerializers
 
