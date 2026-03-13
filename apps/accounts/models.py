@@ -4,11 +4,10 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     class Role(models.TextChoices):
-        User = "USER", "User"
         ADMIN = "ADMIN", "Admin"
         SUPERADMIN = "SUPERADMIN", "Superadmin"
 
-    role = models.CharField(choices=Role.choices, default=Role.User, max_length=10)
+    role = models.CharField(choices=Role.choices, default=Role.ADMIN, max_length=10)
 
     @property
     def is_admin(self):
