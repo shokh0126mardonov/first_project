@@ -36,7 +36,4 @@ class InquirySerializersAdmin(serializers.ModelSerializer):
         if new_status == "responded":
             validated_data["responded_at"] = timezone.now()
 
-        if new_status == "closed":
-            validated_data["responded_at"] = timezone.now()
-
         return super().update(instance, validated_data)

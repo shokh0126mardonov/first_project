@@ -8,7 +8,6 @@ class Inquiry(models.Model):
         ("new", "New"),
         ("viewed", "Viewed"),
         ("responded", "Responded"),
-        ("closed", "Closed"),
     ]
 
     full_name = models.CharField(max_length=255)

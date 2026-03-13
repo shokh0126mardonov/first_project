@@ -1,3 +1,5 @@
+from rest_framework_simplejwt.views import TokenObtainPairView
+from core.throttles import AuthThrottle
 from rest_framework.views import APIView
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -8,6 +10,10 @@ from rest_framework import status
 from .permissions import IsSuperAdmin
 from .serializers import RegisterSerializers, UserSerializers
 
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    throttle_classes = [AuthThrottle]
 
 class AdminCreate(APIView):
     permission_classes = [IsAuthenticated, IsSuperAdmin]
